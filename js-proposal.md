@@ -41,30 +41,30 @@ Pac-Man will be comprised of the following files.
 
 ### Implementation Timeline
 
-**Over the weekend:**
+**Over the weekend:** Planning and general layout
 - [ ] Complete Breakout Tutorial using vanilla Javascript, for general foundation on how to create a game with Javscript
 - [ ] Finish Pixel Perfect Maze layout with Pac-Man and ghost images
 
-**Day 1:**
+**Day 1:** Complete Pac-Man and ghost navigation
 - [ ] Complete Pac-Man navigation/movement throughout maze (can't move through walls, Pacman mouth direction is pointed in direction of navigation)
 - [ ] Single ghost navigation and logic (normal mode, not blue) a
 
-**Day 2:** 
+**Day 2:** Add additional ghosts and incorporate power pellets
 - [ ] Multi ghost navigation 
 - [ ] Add Power Pellets:
     - [ ] Turns ghosts blue temporarily
     - [ ] Pac-man can eat the ghosts
     - [ ] Ghosts move away from Pac-Man
 
-**Day 3:**
+**Day 3:** Add scoring, lives, and sound effects
 - [ ] Add scoring logic and display
 - [ ] Add multi-lives
 - [ ] Add music sound effects
 
-**Day 4:**
-- [ ] Add additional levels? 
+**Day 4:** Potential Bonus Features
+- [ ] Add additional levels? Add scoreboard? 
 
-**Day 5:**
+**Day 5:** Polish
 - [ ] Polish, instructionals, styling
 
  
