@@ -24,7 +24,7 @@ In addition, the following aesthetics and styling will be applied:
 - [ ] Gameover/won  display when game ends
 
 ### Wireframes
-
+![](https://github.com/youknowhu/Pac-Man/blob/master/pacman.png)
 
 
 ### Architecture and Technologies
