@@ -42,7 +42,7 @@ Pac-Man will be comprised of the following files.
 ### Implementation Timeline
 
 **Over the weekend:** Planning and general layout
-- [ ] Complete Breakout Tutorial using vanilla Javascript, for general foundation on how to create a game with Javscript
+- [X] Complete Breakout Tutorial using vanilla Javascript, for general foundation on how to create a game with Javscript
 - [ ] Finish Pixel Perfect Maze layout with Pac-Man and ghost images
 
 **Day 1:** Complete Pac-Man and ghost navigation
