@@ -43,7 +43,7 @@ Pac-Man will be comprised of the following files.
 
 **Over the weekend:** Planning and general layout
 - [X] Complete Breakout Tutorial using vanilla Javascript, for general foundation on how to create a game with Javscript
-- [ ] Finish Maze layout with Pac-Man and ghost images
+- [X] Finish Maze layout with Pac-Man and ghost images
 
 **Day 1:** Complete Pac-Man and ghost navigation
 - [ ] Complete Pac-Man navigation/movement throughout maze (can't move through walls, Pacman mouth direction is pointed in direction of navigation)
