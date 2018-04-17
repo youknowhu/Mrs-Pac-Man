@@ -62,8 +62,8 @@ Pac-Man will be comprised of the following files.
 - [X] Finish Maze layout with Pac-Man and ghost images
 
 **Day 1:** Complete Pac-Man and ghost navigation
-- [ ] Complete Pac-Man navigation/movement throughout maze (can't move through walls, Pacman mouth direction is pointed in direction of navigation)
-- [ ] Single ghost navigation and logic (normal mode, not blue)
+- [X] Complete Pac-Man navigation/movement throughout maze (can't move through walls, Pacman mouth direction is pointed in direction of navigation)
+- [X] Single ghost navigation and logic (normal mode, not blue)
 
 **Day 2:** Add additional ghosts and incorporate power pellets
 - [ ] Multi ghost navigation
