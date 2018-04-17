@@ -1,0 +1,94 @@
+#pacman {
+  background-color: black;
+  margin: 0 auto;
+  display: block;
+  height: 770px;
+  width: 665px;
+}
+
+#pacman > * {
+  width: 35px;
+  height: 35px;
+  display: inline-block;
+  float: left;
+  padding: 0;
+  z-index: 2;
+}
+
+.wall {
+  background-color: blue;
+}
+
+.dot {
+  background-image: url("https://res.cloudinary.com/deor0br3s/image/upload/v1523921736/yellow-dot-th.png");
+  background-size: 8.5px 8.5px;
+  background-repeat: no-repeat;
+  background-position: bottom 13px right 13px;
+}
+
+.power-pellet {
+  background-image: url("https://res.cloudinary.com/deor0br3s/image/upload/v1523921736/yellow-dot-th.png");
+  background-size: 18px 18px;
+  background-repeat: no-repeat;
+  background-position: bottom 8px right 8px;
+}
+
+.pacman-right {
+  background-image: url("https://res.cloudinary.com/deor0br3s/image/upload/v1523921737/sprite-pacman.png");
+  background-size: 28px 28px;
+  background-repeat: no-repeat;
+  background-position: left 3px top 3px;
+}
+
+.pacman-left {
+  background-image: url("https://res.cloudinary.com/deor0br3s/image/upload/v1523921737/sprite-pacman.png");
+  background-size: 28px 28px;
+  background-repeat: no-repeat;
+  background-position: left 3px top 3px;
+  transform: rotate(180deg);
+}
+
+.pacman-up {
+  background-image: url("https://res.cloudinary.com/deor0br3s/image/upload/v1523921737/sprite-pacman.png");
+  background-size: 28px 28px;
+  background-repeat: no-repeat;
+  background-position: left 3px top 3px;
+  transform: rotate(-90deg);
+}
+
+.pacman-down {
+  background-image: url("https://res.cloudinary.com/deor0br3s/image/upload/v1523921737/sprite-pacman.png");
+  background-size: 28px 28px;
+  background-repeat: no-repeat;
+  background-position: left 3px top 3px;
+  transform: rotate(90deg);
+}
+
+.pinky {
+  background-image: url("https://res.cloudinary.com/deor0br3s/image/upload/v1523921736/ghost-pinky.jpg");
+  background-size: 28px 28px;
+  background-repeat: no-repeat;
+  background-position: left 3px top 3px;
+}
+
+.blinky {
+  background-image: url("https://res.cloudinary.com/deor0br3s/image/upload/v1523921736/ghost-blinky.jpg");
+  background-size: 28px 28px;
+  background-repeat: no-repeat;
+  background-position: left 3px top 3px;
+}
+
+.inky {
+  background-image: url("https://res.cloudinary.com/deor0br3s/image/upload/v1523921736/ghost-inky.jpg");
+  background-size: 28px 28px;
+  background-repeat: no-repeat;
+  background-position: left 3px top 3px;
+}
+
+
+.clyde {
+  background-image: url("https://res.cloudinary.com/deor0br3s/image/upload/v1523921736/ghost-clyde.jpg");
+  background-size: 28px 28px;
+  background-repeat: no-repeat;
+  background-position: left 3px top 3px;
+}

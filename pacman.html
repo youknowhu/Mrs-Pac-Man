@@ -6,85 +6,7 @@
   <link rel="icon"
       type="image/png"
       href="./images/sprite-pacman.png">
-  <style>
-    #pacman {
-      background-color: black;
-      margin: 0 auto;
-      display: block;
-      height: 770px;
-      width: 665px;
-    }
-
-    #pacman > * {
-      width: 35px;
-      height: 35px;
-      display: inline-block;
-      float: left;
-      padding: 0;
-      z-index: 2;
-    }
-
-    .wall {
-      background-color: blue;
-    }
-
-    .dot {
-      background-image: url("./images/yellow-dot-th.png");
-      background-size: 8.5px 8.5px;
-      background-repeat: no-repeat;
-      background-position: bottom 13px right 13px;
-    }
-
-    .power-pellet {
-      background-image: url("./images/yellow-dot-th.png");
-      background-size: 18px 18px;
-      background-repeat: no-repeat;
-      background-position: bottom 8px right 8px;
-    }
-
-    .pacman {
-      background-image: url("./images/sprite-pacman.png");
-      background-size: 28px 28px;
-      background-repeat: no-repeat;
-      background-position: left 3px top 3px;
-    }
-
-    .pinky {
-      background-image: url("./images/ghost-pinky.jpg");
-      background-size: 28px 28px;
-      background-repeat: no-repeat;
-      background-position: left 3px top 3px;
-    }
-
-    .blinky {
-      background-image: url("./images/ghost-blinky.jpg");
-      background-size: 28px 28px;
-      background-repeat: no-repeat;
-      background-position: left 3px top 3px;
-    }
-
-    .inky {
-      background-image: url("./images/ghost-inky.jpg");
-      background-size: 28px 28px;
-      background-repeat: no-repeat;
-      background-position: left 3px top 3px;
-    }
-
-    .inky {
-      background-image: url("./images/ghost-inky.jpg");
-      background-size: 28px 28px;
-      background-repeat: no-repeat;
-      background-position: left 3px top 3px;
-    }
-
-    .clyde {
-      background-image: url("./images/ghost-clyde.jpg");
-      background-size: 28px 28px;
-      background-repeat: no-repeat;
-      background-position: left 3px top 3px;
-    }
-
-  </style>
+  <link rel="stylesheet" type="text/css" href="./stylesheet.css">
 </head>
 <body>
 
@@ -94,12 +16,77 @@
 </body>
 
 <script>
+
   // 0 === wall
   // 1 === dot
   // 2 === empty
   // 3 === ghost
   // 4 === power pellet
   // 5 === pacman
+  let FPS = 30;
+  let rightPressed = false;
+  let leftPressed = false;
+  let upPressed = false;
+  let downPressed = false;
+
+  document.addEventListener("keydown", keyDownHandler, false);
+
+  function keyDownHandler(e) {
+    switch (e.keyCode) {
+      case 37:
+        leftPressed = true;
+        rightPressed = false;
+        upPressed = false;
+        downPressed = false;
+        break;
+      case 38:
+        upPressed = true;
+        leftPressed = false;
+        rightPressed = false;
+        downPressed = false;
+        break;
+      case 39:
+        rightPressed = true;
+        upPressed = false;
+        leftPressed = false;
+        downPressed = false;
+        break;
+      case 40:
+        downPressed = true;
+        upPressed = false;
+        leftPressed = false;
+        rightPressed = false;
+        break;
+      default:
+        break;
+    }
+  }
+
+  const pacman = {
+    col: 9,
+    row: 12
+  }
+
+  const pinky = {
+    col: 9,
+    row: 9
+  }
+
+  const blinky = {
+    col: 8,
+    row: 10
+  }
+
+  const inky = {
+    col: 9,
+    row: 10
+  }
+
+  const clyde = {
+    col: 10,
+    row: 10
+  }
+
   const maze = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0],
@@ -125,7 +112,20 @@
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
   ];
 
+  function ghostMove() {
+    let dir = getRandomDirection() {
+      if (dir === 'LEFT') {
+    }
+  }
+
+
+
   function drawMaze() {
+    console.log('draw maze');
+    movePacman();
+    movePinky();
+    moveInky();
+    document.getElementById('pacman').innerHTML = "";
     for (let row = 0; row < maze.length; row += 1) {
       for (let col = 0; col < maze[0].length; col += 1) {
         switch (maze[row][col]) {
@@ -154,14 +154,191 @@
             document.getElementById('pacman').innerHTML += "<div class='power-pellet'></div>"
             break;
           case 5:
-            document.getElementById('pacman').innerHTML += "<div class='pacman'></div>"
+            if (leftPressed) {
+              document.getElementById('pacman').innerHTML += "<div class='pacman-left'></div>"
+            } else if (downPressed) {
+              document.getElementById('pacman').innerHTML += "<div class='pacman-down'></div>"
+            } else if (upPressed) {
+              document.getElementById('pacman').innerHTML += "<div class='pacman-up'></div>"
+            } else {
+              document.getElementById('pacman').innerHTML += "<div class='pacman-right'></div>"
+            }
             break;
         }
       }
     }
   }
 
-  drawMaze()
+  let dir = getRandomDirection();
+  function getRandomDirection() {
+    const directions = ['LEFT', 'UP', 'DOWN', 'RIGHT'];
+    return directions[Math.floor(Math.random() * 4)]
+  }
+
+  function movePinky() {
+    if (dir === 'LEFT') {
+      if (maze[pinky.row][pinky.col - 1] == 5) {
+        window.alert('you lose! pinky ate you.')
+      } else if (maze[pinky.row][pinky.col - 1] == 1 || maze[pinky.row][pinky.col - 1] == 2)  {
+        maze[pinky.row][pinky.col] = 1;
+        pinky.col = pinky.col - 1;
+        maze[pinky.row][pinky.col] = 'gp';
+      } else {
+        dir = getRandomDirection();
+      }
+    } else if (dir === 'UP') {
+      if (maze[pinky.row - 1][pinky.col] == 5) {
+        window.alert('you lose! pinky ate you.')
+      } else if (maze[pinky.row - 1][pinky.col] == 1 || maze[pinky.row - 1][pinky.col] == 2) {
+        maze[pinky.row][pinky.col] = 1;
+        pinky.row = pinky.row - 1;
+        maze[pinky.row][pinky.col] = 'gp';
+      } else {
+        dir = getRandomDirection();
+      }
+    } else if (dir === 'RIGHT') {
+      if (maze[pinky.row][pinky.col + 1] == 5) {
+        window.alert('you lose! pinky ate you.')
+      } else if (maze[pinky.row][pinky.col + 1] == 1 || maze[pinky.row][pinky.col + 1] == 2) {
+        maze[pinky.row][pinky.col] = 1;
+        pinky.col = pinky.col + 1;
+        maze[pinky.row][pinky.col] = 'gp';
+      } else {
+        dir = getRandomDirection();
+      }
+    } else {
+      if (maze[pinky.row + 1][pinky.col] == 5) {
+        window.alert('you lose! pinky ate you.')
+      } else if (maze[pinky.row + 1][pinky.col] == 1 || maze[pinky.row + 1][pinky.col] == 2) {
+        maze[pinky.row][pinky.col] = 1;
+        pinky.row = pinky.row + 1;
+        maze[pinky.row][pinky.col] = 'gp';
+      } else {
+        dir = getRandomDirection();
+      }
+    }
+  }
+
+  function moveInky() {
+    if (dir === 'LEFT') {
+      if (maze[inky.row][inky.col - 1] == 5) {
+        window.alert('you lose! inky ate you.')
+      } else if (maze[inky.row][inky.col - 1] == 1 || maze[inky.row][inky.col - 1] == 2)  {
+        maze[inky.row][inky.col] = 1;
+        inky.col = inky.col - 1;
+        maze[inky.row][inky.col] = 'gi';
+      } else {
+        dir = getRandomDirection();
+      }
+    } else if (dir === 'UP') {
+      if (maze[inky.row - 1][inky.col] == 5) {
+        window.alert('you lose! inky ate you.')
+      } else if (maze[inky.row - 1][inky.col] == 1 || maze[inky.row - 1][inky.col] == 2) {
+        maze[inky.row][inky.col] = 1;
+        inky.row = inky.row - 1;
+        maze[inky.row][inky.col] = 'gi';
+      } else {
+        dir = getRandomDirection();
+      }
+    } else if (dir === 'RIGHT') {
+      if (maze[inky.row][inky.col + 1] == 5) {
+        window.alert('you lose! inky ate you.')
+      } else if (maze[inky.row][inky.col + 1] == 1 || maze[inky.row][inky.col + 1] == 2) {
+        maze[inky.row][inky.col] = 1;
+        inky.col = inky.col + 1;
+        maze[inky.row][inky.col] = 'gi';
+      } else {
+        dir = getRandomDirection();
+      }
+    } else {
+      if (maze[inky.row + 1][inky.col] == 5) {
+        window.alert('you lose! inky ate you.')
+      } else if (maze[inky.row + 1][inky.col] == 1 || maze[inky.row + 1][inky.col] == 2) {
+        maze[inky.row][inky.col] = 1;
+        inky.row = inky.row + 1;
+        maze[inky.row][inky.col] = 'gi';
+      } else {
+        dir = getRandomDirection();
+      }
+    }
+  }
+
+  function moveBlinky() {
+    if (dir === 'LEFT') {
+      if (maze[blinky.row][blinky.col - 1] == 5) {
+        window.alert('you lose! blinky ate you.')
+      } else if (maze[blinky.row][blinky.col - 1] == 1 || maze[blinky.row][blinky.col - 1] == 2)  {
+        maze[blinky.row][blinky.col] = 1;
+        blinky.col = blinky.col - 1;
+        maze[blinky.row][blinky.col] = 'gb';
+      } else {
+        dir = getRandomDirection();
+      }
+    } else if (dir === 'UP') {
+      if (maze[blinky.row - 1][blinky.col] == 5) {
+        window.alert('you lose! blinky ate you.')
+      } else if (maze[blinky.row - 1][blinky.col] == 1 || maze[blinky.row - 1][blinky.col] == 2) {
+        maze[blinky.row][blinky.col] = 1;
+        blinky.row = blinky.row - 1;
+        maze[blinky.row][blinky.col] = 'gb';
+      } else {
+        dir = getRandomDirection();
+      }
+    } else if (dir === 'RIGHT') {
+      if (maze[blinky.row][blinky.col + 1] == 5) {
+        window.alert('you lose! blinky ate you.')
+      } else if (maze[blinky.row][blinky.col + 1] == 1 || maze[blinky.row][blinky.col + 1] == 2) {
+        maze[blinky.row][blinky.col] = 1;
+        blinky.col = blinky.col + 1;
+        maze[blinky.row][blinky.col] = 'gb';
+      } else {
+        dir = getRandomDirection();
+      }
+    } else {
+      if (maze[blinky.row + 1][blinky.col] == 5) {
+        window.alert('you lose! blinky ate you.')
+      } else if (maze[blinky.row + 1][blinky.col] == 1 || maze[blinky.row + 1][blinky.col] == 2) {
+        maze[blinky.row][blinky.col] = 1;
+        blinky.row = blinky.row + 1;
+        maze[blinky.row][blinky.col] = 'gb';
+      } else {
+        dir = getRandomDirection();
+      }
+    }
+  }
+
+  function movePacman() {
+
+    if (leftPressed) {
+      if (maze[pacman.row][pacman.col - 1] != 0) {
+        maze[pacman.row][pacman.col] = 2;
+        pacman.col = pacman.col - 1;
+        maze[pacman.row][pacman.col] = 5;
+      }
+    } else if (upPressed) {
+      if (maze[pacman.row - 1][pacman.col] != 0) {
+        maze[pacman.row][pacman.col] = 2;
+        pacman.row = pacman.row - 1;
+        maze[pacman.row][pacman.col] = 5;
+      }
+    } else if (rightPressed) {
+      if (maze[pacman.row][pacman.col + 1] != 0) {
+        maze[pacman.row][pacman.col] = 2;
+        pacman.col = pacman.col + 1;
+        maze[pacman.row][pacman.col] = 5;
+      }
+    } else if (downPressed) {
+      if (maze[pacman.row + 1][pacman.col] != 0) {
+        maze[pacman.row][pacman.col] = 2;
+        pacman.row = pacman.row + 1;
+        maze[pacman.row][pacman.col] = 5;
+      }
+    }
+  }
+
+  drawMaze();
+  window.setInterval(drawMaze, FPS)
+
 
 </script>
 </html>
