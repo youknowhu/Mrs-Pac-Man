@@ -1,6 +1,4 @@
 import Pacman from './pacman.js'
-debugger;
-
 class Game {
   constuctor(maze, pacman) {
     debugger;
@@ -19,5 +17,3 @@ class Game {
     return false;
   }
 }
-
-export default Game;

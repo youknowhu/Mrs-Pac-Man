@@ -20,28 +20,28 @@
 }
 
 .dot {
-  background-image: url("https://res.cloudinary.com/deor0br3s/image/upload/v1523921736/yellow-dot-th.png");
+  background-image: url("https://res.cloudinary.com/deor0br3s/image/upload/v1523992287/Untitled_drawing_4.png");
   background-size: 8.5px 8.5px;
   background-repeat: no-repeat;
   background-position: bottom 13px right 13px;
 }
 
 .power-pellet {
-  background-image: url("https://res.cloudinary.com/deor0br3s/image/upload/v1523921736/yellow-dot-th.png");
+  background-image: url("https://media.giphy.com/media/1Bg8cPljtSccMrkB65/giphy.gif");
   background-size: 18px 18px;
   background-repeat: no-repeat;
   background-position: bottom 8px right 8px;
 }
 
 .pacman-right {
-  background-image: url("https://res.cloudinary.com/deor0br3s/image/upload/v1523921737/sprite-pacman.png");
+  background-image: url("https://media.giphy.com/media/1gVNAzvCrRUKwRRN5n/giphy.gif");
   background-size: 28px 28px;
   background-repeat: no-repeat;
   background-position: left 3px top 3px;
 }
 
 .pacman-left {
-  background-image: url("https://res.cloudinary.com/deor0br3s/image/upload/v1523921737/sprite-pacman.png");
+  background-image: url("https://media.giphy.com/media/1gVNAzvCrRUKwRRN5n/giphy.gif");
   background-size: 28px 28px;
   background-repeat: no-repeat;
   background-position: left 3px top 3px;
@@ -49,7 +49,7 @@
 }
 
 .pacman-up {
-  background-image: url("https://res.cloudinary.com/deor0br3s/image/upload/v1523921737/sprite-pacman.png");
+  background-image: url("https://media.giphy.com/media/1gVNAzvCrRUKwRRN5n/giphy.gif");
   background-size: 28px 28px;
   background-repeat: no-repeat;
   background-position: left 3px top 3px;
@@ -57,7 +57,7 @@
 }
 
 .pacman-down {
-  background-image: url("https://res.cloudinary.com/deor0br3s/image/upload/v1523921737/sprite-pacman.png");
+  background-image: url("https://media.giphy.com/media/1gVNAzvCrRUKwRRN5n/giphy.gif");
   background-size: 28px 28px;
   background-repeat: no-repeat;
   background-position: left 3px top 3px;

@@ -1,0 +1,57 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Pac-Man</title>
+  <link rel="icon"
+      type="image/png"
+      href="./images/sprite-pacman.png">
+  <link rel="stylesheet" type="text/css" href="./stylesheet.css">
+</head>
+<body>
+
+  <canvas id="pacman-move"></canvas>
+
+<script>
+  const pacmanImg = new Image();
+  pacmanImg.src = 'images/PacmanMoveSprite.png';
+
+  function sprite(options) {
+
+    var that = {};
+
+    that.context = options.context;
+    that.width = options.width;
+    that.height = options.height;
+    that.image = options.image;
+    that.render = function() {
+      that.context.drawImage(
+          that.image,
+          0,
+          0,
+          that.width,
+          that.height,
+          0,
+          0,
+          that.width,
+          that.height);
+        }
+
+    return that;
+  }
+
+  const canvas = document.getElementById("pacman-move");
+  canvas.width = 250;
+  canvas.height = 250;
+
+
+  const pacmanMove = sprite({
+    context: canvas.getContext("2d"),
+    width: 250,
+    height: 250,
+    image: pacmanImg,
+  })
+  debugger;
+
+  pacmanMove.render();
+
+</script>
