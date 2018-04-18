@@ -1,6 +1,14 @@
+body {
+  display: flex;
+  justify-content: center;
+}
+
+body > * {
+  margin: 20px 50px;
+}
+
 #pacman {
   background-color: black;
-  margin: 0 auto;
   display: block;
   height: 770px;
   width: 665px;
@@ -13,6 +21,28 @@
   float: left;
   padding: 0;
   z-index: 2;
+}
+
+#scoreboard {
+  background-color: black;
+  height: 275px;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 50px;
+}
+
+#scoreboard > * {
+  color: white;
+  font-size: 24px;
+  padding-top: 15px;
+  font-family: tahoma;
+}
+
+.lives > img {
+  width: 30px;
+  height: 30px;
 }
 
 .wall {
@@ -34,14 +64,14 @@
 }
 
 .pacman-right {
-  background-image: url("https://media.giphy.com/media/1gVNAzvCrRUKwRRN5n/giphy.gif");
+  background-image: url("https://media.giphy.com/media/u49UDGO7rAY3B6eLrg/giphy.gif");
   background-size: 28px 28px;
   background-repeat: no-repeat;
   background-position: left 3px top 3px;
 }
 
 .pacman-left {
-  background-image: url("https://media.giphy.com/media/1gVNAzvCrRUKwRRN5n/giphy.gif");
+  background-image: url("https://media.giphy.com/media/u49UDGO7rAY3B6eLrg/giphy.gif");
   background-size: 28px 28px;
   background-repeat: no-repeat;
   background-position: left 3px top 3px;
@@ -49,7 +79,7 @@
 }
 
 .pacman-up {
-  background-image: url("https://media.giphy.com/media/1gVNAzvCrRUKwRRN5n/giphy.gif");
+  background-image: url("https://media.giphy.com/media/u49UDGO7rAY3B6eLrg/giphy.gif");
   background-size: 28px 28px;
   background-repeat: no-repeat;
   background-position: left 3px top 3px;
@@ -57,7 +87,7 @@
 }
 
 .pacman-down {
-  background-image: url("https://media.giphy.com/media/1gVNAzvCrRUKwRRN5n/giphy.gif");
+  background-image: url("https://media.giphy.com/media/u49UDGO7rAY3B6eLrg/giphy.gif");
   background-size: 28px 28px;
   background-repeat: no-repeat;
   background-position: left 3px top 3px;
@@ -85,9 +115,15 @@
   background-position: left 3px top 3px;
 }
 
-
 .clyde {
   background-image: url("https://res.cloudinary.com/deor0br3s/image/upload/v1523921736/ghost-clyde.jpg");
+  background-size: 28px 28px;
+  background-repeat: no-repeat;
+  background-position: left 3px top 3px;
+}
+
+.blue-ghost {
+  background-image: url("https://res.cloudinary.com/deor0br3s/image/upload/v1524010091/pac_man__ghosts_and_guns_by_53xy83457-d5e95ws.png");
   background-size: 28px 28px;
   background-repeat: no-repeat;
   background-position: left 3px top 3px;

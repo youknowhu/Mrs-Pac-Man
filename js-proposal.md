@@ -16,26 +16,11 @@ In this rendition of Pac-Man:
 - [X] Player will be able navigate Pac-Man through the maze.
 - [ ] Four AI ghosts will chase Pac-Man. Player will lose a life if a ghost catches Pac-Man.
 - [ ] Player can eat a power pellet to turn the ghosts blue, and can earn points by having Pac-Man eat the ghosts when they are blue.
-- [ ] Player will have multiple lives to beat Pac-Man
+- [X] Player will have multiple lives to beat Pac-Man
 - [ ] There will be sound effects for general navigation, when Pac-Man is eaten, and when the ghosts are eaten.
 
 In addition, the following aesthetics and styling will be applied:
-- [ ] A scoreboard on the right
-- [ ] An instructional about how to navigate and play Pac-Man.
-=======
-Pac-Man is a classic arcade game from the 1980s. The player navigates Pac-Man through a maze to collect dots while avoiding colorful ghosts (Blinky, Pinky, Inky and Clyde). The player wins a level if they successfully collect all the dots.
-There are special dots called "power pellets" that give Pac-Man the temporary ability to eat the ghosts.
-
-### Functionality & MVP
-In this rendition of Pac-Man:
-- [ ] Player will be able navigate Pac-Man through the maze.
-- [ ] Four AI ghosts will chase Pac-Man. Player will lose a life if a ghost catches Pac-Man.
-- [ ] Player can eat a power pellet to turn the ghosts blue, and can earn points by having Pac-Man eat the ghosts when they are blue.
-- [ ] Player will have multiple lives to beat Pac-Man
-- [ ] There will be sound effects for general navigation, when Pac-Man is eaten, and when the ghosts are eaten.
-
-In addition, the following aesthetics and styling will be applied:
-- [ ] A scoreboard on the right
+- [X] A scoreboard on the right
 - [ ] An instructional about how to navigate and play Pac-Man.
 - [ ] Gameover/won  display when game ends
 
@@ -67,19 +52,19 @@ Pac-Man will be comprised of the following files.
 
 **Day 2:** Add additional ghosts and incorporate power pellets
 - [ ] Multi ghost navigation
-- [ ] Add Power Pellets:
-    - [ ] Turns ghosts blue temporarily
+- [X] Add Power Pellets:
+    - [X] Turns ghosts blue temporarily
     - [ ] Pac-man can eat the ghosts
     - [ ] Ghosts move away from Pac-Man
 
 **Day 3:** Add scoring, lives, and sound effects
-- [ ] Add scoring logic and display
-- [ ] Add multi-lives
+- [X] Add scoring logic and display
+- [X] Add multi-lives
 - [ ] Add music sound effects
 
 **Day 4:** Potential Bonus Features
 - [ ] Add additional levels? Add scoreboard?
-- [ ] Add additional levels? Add scoreboard?
+- [ ] STart
 
 **Day 5:** Polish
 - [ ] Polish, instructionals, styling
