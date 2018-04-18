@@ -207,89 +207,40 @@
     if (ghost.dir) {
       switch(ghost.dir) {
         case 'LEFT':
-          if (maze[ghost.row][ghost.col - 1] == 5) {
-            maze[ghost.row][ghost.col] = ghost.prevSpace || 2;
-            maze[ghost.row][ghost.col - 1] = ghost.abbr;
-            ghost.col = ghost.col - 1;
-            ghost.prevSpace = 2;
-            maze[12][9] = 5;
-            pacman.row = 12;
-            pacman.col = 9;
-            pacman.lives = pacman.lives - 1;
-
-
-          } else if (maze[ghost.row][ghost.col - 1] == 1 || maze[ghost.row][ghost.col - 1] == 2 ||  maze[ghost.row][ghost.col - 1] == 4)  {
-              maze[ghost.row][ghost.col] = ghost.prevSpace || 2;
-              ghost.prevSpace = maze[ghost.row][ghost.col - 1]
-              ghost.col = ghost.col - 1;
-              maze[ghost.row][ghost.col] = abbr;
-          } else {
-            ghost.dir = getRandomDirection()
-          }
+          ghostNextRow = ghost.row;
+          ghostNextCol = ghost.col - 1;
           break;
         case 'UP':
-          if (maze[ghost.row - 1][ghost.col] == 5) {
-            maze[ghost.row][ghost.col] = ghost.prevSpace || 2;
-            maze[ghost.row - 1][ghost.col] = ghost.abbr;
-            ghost.prevSpace = 2;
-            ghost.row = ghost.row - 1;
-            maze[12][9] = 5;
-            pacman.row = 12;
-            pacman.col = 9;
-            pacman.lives = pacman.lives - 1;
-          } else if (maze[ghost.row - 1][ghost.col] == 1 ||
-              maze[ghost.row - 1][ghost.col] == 2 ||
-              maze[ghost.row - 1][ghost.col] == 4 )  {
-            maze[ghost.row][ghost.col] = ghost.prevSpace || 2;
-            ghost.prevSpace = maze[ghost.row - 1][ghost.col]
-            ghost.row = ghost.row - 1;
-            maze[ghost.row][ghost.col] = abbr;
-          } else {
-            ghost.dir = getRandomDirection();
-          }
-          break;
-        case 'DOWN':
-          if (maze[ghost.row + 1][ghost.col] == 5) {
-            maze[ghost.row][ghost.col] = ghost.prevSpace || 2;
-            maze[ghost.row + 1][ghost.col] = ghost.abbr;
-            ghost.row = ghost.row + 1;
-            ghost.prevSpace = 2;
-            maze[12][9] = 5;
-            pacman.row = 12;
-            pacman.col = 9;
-            pacman.lives = pacman.lives - 1;
-          } else if (maze[ghost.row + 1][ghost.col] == 1 ||
-              maze[ghost.row + 1][ghost.col] == 2 ||
-              maze[ghost.row + 1][ghost.col] == 4 )  {
-              maze[ghost.row][ghost.col] = ghost.prevSpace || 2;
-              ghost.prevSpace = maze[ghost.row + 1][ghost.col]
-              ghost.row = ghost.row + 1;
-              maze[ghost.row][ghost.col] = abbr;
-          } else {
-            ghost.dir = getRandomDirection();
-          }
+          ghostNextRow = ghost.row - 1;
+          ghostNextCol = ghost.col;
           break;
         case 'RIGHT':
-          if (maze[ghost.row][ghost.col + 1] == 5) {
-            maze[ghost.row][ghost.col] = ghost.prevSpace || 2;
-            maze[ghost.row][ghost.col + 1] = ghost.abbr;
-            ghost.col = ghost.col + 1;
-            ghost.prevSpace = 2;
-            maze[12][9] = 5;
-            pacman.row = 12;
-            pacman.col = 9;
-            pacman.lives = pacman.lives - 1;
-          } else if (maze[ghost.row][ghost.col + 1] == 1 ||
-              maze[ghost.row][ghost.col + 1] == 2 ||
-              maze[ghost.row][ghost.col + 1] == 4)  {
-              maze[ghost.row][ghost.col] = ghost.prevSpace || 2;
-              ghost.prevSpace = maze[ghost.row][ghost.col + 1]
-              ghost.col = ghost.col + 1;
-              maze[ghost.row][ghost.col] = abbr;
-          } else {
-            ghost.dir = getRandomDirection();
-          }
-        break;
+          ghostNextRow = ghost.row;
+          ghostNextCol = ghost.col + 1;
+          break;
+        case 'DOWN':
+          ghostNextRow = ghost.row + 1;
+          ghostNextCol = ghost.col;
+          break;
+      }
+
+      let nextLoc = maze[ghostNextRow][ghostNextCol];
+
+      if (nextLoc == 5 && !ghost.vulnerable)  {
+        maze[ghost.row][ghost.col] = ghost.prevSpace || 2;
+        [ghost.row, ghost.col] = [ghostNextRow, ghostNextCol]
+        ghost.prevSpace = 2;
+        maze[12][9] = 5;
+        [pacman.row, pacman.col] = [12, 9];
+        pacman.lives = pacman.lives - 1;
+        maze[ghost.row][ghost.col] = abbr;
+      } else if (nextLoc > 0 && nextLoc < 5) {
+        maze[ghost.row][ghost.col] = ghost.prevSpace || 2;
+        ghost.prevSpace = nextLoc;
+        [ghost.row, ghost.col] = [ghostNextRow, ghostNextCol]
+        maze[ghost.row][ghost.col] = abbr;
+      } else {
+        ghost.dir = getRandomDirection();
       }
     } else {
       ghost.dir = getRandomDirection();
@@ -298,78 +249,50 @@
 
   function movePacman() {
 
+    let pacmanNextRow;
+    let pacmanNextCol;
+
     if (leftPressed) {
-      if (maze[pacman.row][pacman.col - 1] != 0) {
-        if (maze[pacman.row][pacman.col - 1] == 1) {
-          score += 10;
-        } else if (maze[pacman.row][pacman.col - 1] == 4) {
-
-          ghosts.forEach(ghost => {
-            ghost.vulnerable = true;
-          })
-
-          setTimeout(() => ghosts.forEach( ghost => {
-            ghost.vulnerable = false;
-          }), 10000);
-        }
-        maze[pacman.row][pacman.col] = 2;
-        pacman.col = pacman.col - 1;
-        maze[pacman.row][pacman.col] = 5;
-      }
+      pacmanNextRow = pacman.row;
+      pacmanNextCol = pacman.col - 1;
     } else if (upPressed) {
-      if (maze[pacman.row - 1][pacman.col] != 0) {
-        if (maze[pacman.row - 1][pacman.col] == 1) {
-          score += 10;
-        } else if (maze[pacman.row - 1][pacman.col] == 4) {
-
-          ghosts.forEach(ghost => {
-            ghost.vulnerable = true;
-          })
-
-          setTimeout(() => ghosts.forEach( ghost => {
-            ghost.vulnerable = false;
-          }), 10000);
-        }
-        maze[pacman.row][pacman.col] = 2;
-        pacman.row = pacman.row - 1;
-        maze[pacman.row][pacman.col] = 5;
-      }
+      pacmanNextRow = pacman.row - 1;
+      pacmanNextCol = pacman.col;
     } else if (rightPressed) {
-      if (maze[pacman.row][pacman.col + 1] != 0) {
-        if (maze[pacman.row][pacman.col + 1] == 1) {
-          score += 10;
-        } else if (maze[pacman.row][pacman.col + 1] == 4) {
-
-          ghosts.forEach(ghost => {
-            ghost.vulnerable = true;
-          })
-
-          setTimeout(() => ghosts.forEach( ghost => {
-            ghost.vulnerable = false;
-          }), 10000);
-        }
-        maze[pacman.row][pacman.col] = 2;
-        pacman.col = pacman.col + 1;
-        maze[pacman.row][pacman.col] = 5;
-      }
+      pacmanNextRow = pacman.row;
+      pacmanNextCol = pacman.col + 1;
     } else if (downPressed) {
-      if (maze[pacman.row + 1][pacman.col] != 0) {
-        if (maze[pacman.row + 1][pacman.col] == 1) {
-          score += 10;
-        } else if (maze[pacman.row + 1][pacman.col] == 4) {
+      pacmanNextRow = pacman.row + 1;
+      pacmanNextCol = pacman.col;
+    } else {
+      return;
+    }
 
-          ghosts.forEach(ghost => {
-            ghost.vulnerable = true;
-          })
+    const nextLoc = maze[pacmanNextRow][pacmanNextCol];
 
-          setTimeout(() => ghosts.forEach( ghost => {
-            ghost.vulnerable = false;
-          }), 10000);
-        }
-        maze[pacman.row][pacman.col] = 2;
-        pacman.row = pacman.row + 1;
-        maze[pacman.row][pacman.col] = 5;
+    if (nextLoc != 0) {
+      if (nextLoc == 1) {
+        score += 10;
+      } else if (nextLoc == 4) {
+        ghosts.forEach(ghost => {
+          ghost.vulnerable = true;
+        })
+
+        setTimeout(() => ghosts.forEach( ghost => {
+          ghost.vulnerable = false;
+        }), 9000);
+      }  else if (nextLoc === 'blue') {
+        score += 200;
+        let ghost = ghosts.filter(ghost => ghost.row == pacmanNextRow && ghost.col == pacmanNextCol)[0];
+        maze[ghost.row][ghost.col] = 2;
+        [ghost.row, ghost.col] = [9, 9];
+        ghost.vulnerable = false;
+        maze[9][9] = ghost.abbr;
       }
+
+      maze[pacman.row][pacman.col] = 2;
+      [pacman.row, pacman.col] = [pacmanNextRow, pacmanNextCol];
+      maze[pacmanNextRow][pacmanNextCol] = 5;
     }
   }
 
