@@ -15,6 +15,11 @@
   <div id="scoreboard">
   </div>
 
+
+  <audio id='chomp'>
+    <source src="./sound/pacman_chomp.wav" type="audio/wav">
+  </audio>
+
 </body>
 
 <script>
@@ -72,11 +77,12 @@
   }
 
   class Ghost {
-    constructor(name, abbr,col, row) {
+    constructor(name, abbr, col, row, moves) {
       this.name = name;
       this.abbr = abbr;
       this.col = col;
       this.row = row;
+      this.moves = moves;
       this.dir = null;
       this.prevSpace = null;
       this.vulnerable = false;
@@ -234,6 +240,9 @@
         [pacman.row, pacman.col] = [12, 9];
         pacman.lives = pacman.lives - 1;
         maze[ghost.row][ghost.col] = abbr;
+
+        const audio= new Audio('./sound/pacman_death.wav');
+        audio.play();
       } else if (nextLoc > 0 && nextLoc < 5) {
         maze[ghost.row][ghost.col] = ghost.prevSpace || 2;
         ghost.prevSpace = nextLoc;
@@ -273,7 +282,13 @@
     if (nextLoc != 0) {
       if (nextLoc == 1) {
         score += 10;
+        const chomp = document.getElementById('chomp');
+        chomp.pause();
+        chomp.play();
       } else if (nextLoc == 4) {
+        const audio = new Audio('./sound/pacman_eatfruit.wav');
+        audio.play();
+
         ghosts.forEach(ghost => {
           ghost.vulnerable = true;
         })
@@ -288,6 +303,8 @@
         [ghost.row, ghost.col] = [9, 9];
         ghost.vulnerable = false;
         maze[9][9] = ghost.abbr;
+        const audio = new Audio('./sound/pacman_eatghost.wav');
+        audio.play();
       }
 
       maze[pacman.row][pacman.col] = 2;
@@ -297,8 +314,9 @@
   }
 
   drawMaze();
+  const audioStart = new Audio('./sound/pacman_beginning.wav');
+  audioStart.play();
+
   window.setInterval(drawMaze, 200)
-
-
 </script>
 </html>

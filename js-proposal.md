@@ -54,7 +54,7 @@ Pac-Man will be comprised of the following files.
 - [ ] Multi ghost navigation
 - [X] Add Power Pellets:
     - [X] Turns ghosts blue temporarily
-    - [ ] Pac-man can eat the ghosts
+    - [X] Pac-man can eat the ghosts
     - [ ] Ghosts move away from Pac-Man
 
 **Day 3:** Add scoring, lives, and sound effects
@@ -64,7 +64,7 @@ Pac-Man will be comprised of the following files.
 
 **Day 4:** Potential Bonus Features
 - [ ] Add additional levels? Add scoreboard?
-- [ ] STart
+- [ ] Start game, pause, game over
 
 **Day 5:** Polish
 - [ ] Polish, instructionals, styling
