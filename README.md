@@ -8,17 +8,41 @@ The player navigates Pac-Man through a maze to collect dots while avoiding color
 ![Pacman Giphy](https://media.giphy.com/media/A1lE7R49IcWicpy9qJ/giphy.gif)
 
 ## Contents
-[Technologies Used](#technologies-used) | [Project Highlights](#project-highlights) | [Planned Work](#planned-work)
+[Technologies Used](#technologies-used) | [Ghost AI](#ghost-ai) | [Planned Work](#planned-work)
 
 ## Technologies Used
 * HTML5
 * CSS3
 * Javscript ES6
 
-## Project Highlights
+## Ghost AI
+The Pac-Man Ghost AI are built with several different strategies:
+* The initial movement for all ghosts is dictated by set targets.
+* Blinky and Inky will receive a random direction and will continue to move in that direction until they hit a wall, in which they will receive a new direction.
+* When not vulnerable, Pinky and Clyde calculate the distance between Pac-Man and their potential moves, and will select the shortest distance. If stuck, Pinky and Clyde will also receive a random direction.
 
-#### Ghost AI
+#### Code Snippet for Pinky and Clyde AI logic:
+```javascript
+{
+  dir: 'LEFT',
+  nextPos: maze[ghost.row][ghost.col - 1],
+  distance: Math.sqrt(Math.pow((ghost.row - pacman.row), 2)
+  + Math.pow((ghost.col - 1 - pacman.col), 2))
+},
+{
+  dir: 'RIGHT',
+  nextPos: maze[ghost.row][ghost.col + 1],
+  distance: Math.sqrt(Math.pow((ghost.row- pacman.row), 2)
+  + Math.pow((ghost.col + 1 - pacman.col), 2))
+}
+]
 
+const shortestDir = dirs.sort((dir1, dir2) => {
+return dir1.distance - dir2.distance;
+})[0];
+return shortestDir.dir;
+
+```
 
 
 ## Planned Work
