@@ -51,16 +51,16 @@ Pac-Man will be comprised of the following files.
 - [X] Single ghost navigation and logic (normal mode, not blue)
 
 **Day 2:** Add additional ghosts and incorporate power pellets
-- [ ] Multi ghost navigation
+- [X] Multi ghost navigation
 - [X] Add Power Pellets:
     - [X] Turns ghosts blue temporarily
     - [X] Pac-man can eat the ghosts
-    - [ ] Ghosts move away from Pac-Man
+    - [X] Ghosts move away from Pac-Man
 
 **Day 3:** Add scoring, lives, and sound effects
 - [X] Add scoring logic and display
 - [X] Add multi-lives
-- [ ] Add music sound effects
+- [X] Add music sound effects
 
 **Day 4:** Potential Bonus Features
 - [ ] Add additional levels? Add scoreboard?
