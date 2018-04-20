@@ -5,6 +5,8 @@ A recreation of the classic Pac-Man game using only Javascript, CSS, and HTML
 
 The player navigates Pac-Man through a maze to collect dots while avoiding colorful ghosts (Blinky, Pinky, Inky and Clyde). The player wins a level if they successfully collect all the dots. There are special dots called "power pellets" that give Pac-Man the temporary ability to eat the ghosts.
 
+![Pacman Giphy](https://media.giphy.com/media/A1lE7R49IcWicpy9qJ/giphy.gif)
+
 ## Contents
 [Technologies Used](#technologies-used) | [Project Highlights](#project-highlights) | [Planned Work](#planned-work)
 
