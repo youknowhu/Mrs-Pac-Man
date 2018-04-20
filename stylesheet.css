@@ -7,6 +7,15 @@ body > * {
   margin: 20px 50px;
 }
 
+.right {
+  display: flex;
+  flex-direction: column;
+}
+
+.right > * {
+  padding-top: 30px;
+}
+
 #pacman {
   background-color: black;
   display: block;
@@ -38,6 +47,14 @@ body > * {
   font-size: 24px;
   padding-top: 15px;
   font-family: tahoma;
+}
+
+#buttons {
+  margin: 0 auto;
+}
+
+#buttons > * {
+  padding: 15px;
 }
 
 .lives > img {
@@ -127,4 +144,13 @@ body > * {
   background-size: 28px 28px;
   background-repeat: no-repeat;
   background-position: left 3px top 3px;
+}
+
+i {
+  color: gray;
+  cursor: pointer;
+}
+
+.pressed {
+  color: blue;
 }

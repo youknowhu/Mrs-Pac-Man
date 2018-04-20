@@ -63,7 +63,7 @@ Pac-Man will be comprised of the following files.
 - [X] Add music sound effects
 
 **Day 4:** Potential Bonus Features
-- [ ] Add additional levels? Add scoreboard?
+- [X] Add scoreboard?
 - [ ] Start game, pause, game over
 
 **Day 5:** Polish

@@ -7,17 +7,40 @@
       type="image/png"
       href="./images/sprite-pacman.png">
   <link rel="stylesheet" type="text/css" href="./stylesheet.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
   <div id="pacman">
   </div>
 
-  <div id="scoreboard">
-  </div>
+  <div class='right'>
+    <div id="scoreboard">
+    </div>
 
+    <div id='buttons'>
+      <i id='mute' class="fa fa-volume-off fa-2x"></i></a>
+      <i id='sound-on' class="fa fa-volume-up pressed fa-2x"></i></a>
+    </div>
+  </div>
 
   <audio id='chomp'>
     <source src="./sound/pacman_chomp.wav" type="audio/wav">
+  </audio>
+
+  <audio id='power-pellet'>
+    <source src="./sound/pacman_eatfruit.wav" type="audio/wav">
+  </audio>
+
+  <audio id='death'>
+    <source src="./sound/pacman_death.wav" type="audio/wav">
+  </audio>
+
+  <audio id='eat-ghost'>
+    <source src="./sound/pacman_eatghost.wav" type="audio/wav">
+  </audio>
+
+  <audio id='start'>
+    <source src="./sound/pacman_beginning.wav" type="audio/wav">
   </audio>
 
 </body>
@@ -36,6 +59,30 @@
   let downPressed = false;
 
   document.addEventListener("keydown", keyDownHandler, false);
+  document.getElementById('mute').addEventListener('click', e => {
+    e.preventDefault();
+
+    const audioFiles = Array.from(document.querySelectorAll('audio'));
+    audioFiles.forEach(audio => { audio.muted = true })
+
+    const muteButton = document.getElementById('mute');
+    const soundButton = document.getElementById('sound-on');
+    muteButton.classList.add('pressed')
+    soundButton.classList.remove('pressed')
+    debugger;
+  }, false);
+
+  document.getElementById('sound-on').addEventListener('click', e => {
+    e.preventDefault();
+
+    const audioFiles = Array.from(document.querySelectorAll('audio'));
+    audioFiles.forEach(audio => { audio.muted = false })
+
+    const muteButton = document.getElementById('mute');
+    const soundButton = document.getElementById('sound-on');
+    muteButton.classList.remove('pressed')
+    soundButton.classList.add('pressed')
+  }, false);
 
   function keyDownHandler(e) {
     switch (e.keyCode) {
@@ -270,8 +317,8 @@
         maze[12][9] = 5;
         [pacman.row, pacman.col] = [12, 9];
         pacman.lives = pacman.lives - 1;
-        const audio= new Audio('./sound/pacman_death.wav');
-        audio.play();
+        const death = document.getElementById('death');
+        death.play();
 
         for (let i = 0; i < ghosts.length; i++) {
           const ghostReset = ghosts[i];
@@ -304,6 +351,10 @@
           }
         }
       } else if (nextLoc > 0 && nextLoc < 5) {
+        if ((ghost.row == 9 && ghost.col == 9) ||
+          ((ghost.row == 10) && (ghost.col >= 8 || ghost.col <= 10))) {
+            ghost.prevSpace = 2;
+          }
         maze[ghost.row][ghost.col] = ghost.prevSpace || 2;
         ghost.prevSpace = nextLoc;
         [ghost.row, ghost.col] = [ghostNextRow, ghostNextCol]
@@ -383,8 +434,9 @@
         chomp.pause();
         chomp.play();
       } else if (nextLoc == 4) {
-        const audio = new Audio('./sound/pacman_eatfruit.wav');
-        audio.play();
+
+        const powerPellet = document.getElementById('power-pellet');
+        powerPellet.play();
 
         ghosts.forEach(ghost => {
           ghost.vulnerable = true;
@@ -398,8 +450,10 @@
         maze[12][9] = 5;
         [pacman.row, pacman.col] = [12, 9];
         pacman.lives = pacman.lives - 1;
-        const audio= new Audio('./sound/pacman_death.wav');
-        audio.play();
+
+        const death = document.getElementById('death');
+        death.play();
+
         return;
       } else if (nextLoc === 'blue') {
         score += 200;
@@ -408,9 +462,9 @@
         [ghost.row, ghost.col] = [9, 9];
         ghost.vulnerable = false;
         maze[9][9] = ghost.abbr;
-        const audio = new Audio('./sound/pacman_eatghost.wav');
-        audio.play();
 
+        const eatGhost = document.getElementById('eat-ghost');
+        eatGhost.play();
         ghost.moves = Array.from(pinkyMoves);
       }
 
@@ -423,8 +477,8 @@
   }
 
   drawMaze();
-  const audioStart = new Audio('./sound/pacman_beginning.wav');
-  // audioStart.play();
+  const audioStart = document.getElementById('start');
+  audioStart.play();
 
   window.setInterval(drawMaze, 200)
 </script>
