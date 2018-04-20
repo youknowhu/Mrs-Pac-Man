@@ -14,10 +14,10 @@ There are special dots called "power pellets" that give Pac-Man the temporary ab
 ### Functionality & MVP
 In this rendition of Pac-Man:
 - [X] Player will be able navigate Pac-Man through the maze.
-- [ ] Four AI ghosts will chase Pac-Man. Player will lose a life if a ghost catches Pac-Man.
-- [ ] Player can eat a power pellet to turn the ghosts blue, and can earn points by having Pac-Man eat the ghosts when they are blue.
+- [X] Four AI ghosts will chase Pac-Man. Player will lose a life if a ghost catches Pac-Man.
+- [X] Player can eat a power pellet to turn the ghosts blue, and can earn points by having Pac-Man eat the ghosts when they are blue.
 - [X] Player will have multiple lives to beat Pac-Man
-- [ ] There will be sound effects for general navigation, when Pac-Man is eaten, and when the ghosts are eaten.
+- [X] There will be sound effects for general navigation, when Pac-Man is eaten, and when the ghosts are eaten.
 
 In addition, the following aesthetics and styling will be applied:
 - [X] A scoreboard on the right
