@@ -23,24 +23,39 @@ The Pac-Man Ghost AI are built with several different strategies:
 
 #### Code Snippet for Pinky and Clyde AI logic:
 ```javascript
-{
-  dir: 'LEFT',
-  nextPos: maze[ghost.row][ghost.col - 1],
-  distance: Math.sqrt(Math.pow((ghost.row - pacman.row), 2)
-  + Math.pow((ghost.col - 1 - pacman.col), 2))
-},
-{
-  dir: 'RIGHT',
-  nextPos: maze[ghost.row][ghost.col + 1],
-  distance: Math.sqrt(Math.pow((ghost.row- pacman.row), 2)
-  + Math.pow((ghost.col + 1 - pacman.col), 2))
-}
-]
+function ghostMoveDistance(ghost) {
+  let dirs = [
+    {
+      dir: 'UP',
+      nextPos: maze[ghost.row - 1][ghost.col],
+      distance: Math.sqrt(Math.pow((ghost.row - 1 - pacman.row), 2)
+      + Math.pow((ghost.col - pacman.col), 2))
+    },
+    {
+      dir: 'DOWN',
+      nextPos: maze[ghost.row + 1][ghost.col],
+      distance: Math.sqrt(Math.pow((ghost.row + 1 - pacman.row), 2)
+      + Math.pow((ghost.col - pacman.col), 2))
+    },
+    {
+      dir: 'LEFT',
+      nextPos: maze[ghost.row][ghost.col - 1],
+      distance: Math.sqrt(Math.pow((ghost.row - pacman.row), 2)
+      + Math.pow((ghost.col - 1 - pacman.col), 2))
+    },
+    {
+      dir: 'RIGHT',
+      nextPos: maze[ghost.row][ghost.col + 1],
+      distance: Math.sqrt(Math.pow((ghost.row- pacman.row), 2)
+      + Math.pow((ghost.col + 1 - pacman.col), 2))
+    }
+  ]
 
-const shortestDir = dirs.sort((dir1, dir2) => {
-return dir1.distance - dir2.distance;
-})[0];
-return shortestDir.dir;
+  const shortestDir = dirs.sort((dir1, dir2) => {
+    return dir1.distance - dir2.distance;
+  })[0];
+  return shortestDir.dir;
+}
 
 ```
 
