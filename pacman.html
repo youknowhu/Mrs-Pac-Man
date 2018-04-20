@@ -89,35 +89,51 @@
     }
   }
 
-  const pinky = new Ghost('pinky', 'gp', 9, 9);
-  const blinky = new Ghost('blinky', 'gb', 8, 10);
-  const inky = new Ghost('inky','gi', 9, 10);
-  const clyde = new Ghost('clyde', 'gc', 10, 10);
-  const ghosts = [pinky, blinky, inky, clyde];
+  const pinkyMoves = [
+    [8, 9], [8, 8], [7, 8], [6,8], [6, 7], [6,6], [5, 6], [4, 6], [4, 5], [4, 4]
+  ];
+  const inkyMoves = [
+    [9, 9], [8, 9], [8, 10], [7, 10], [6, 10], [6,11], [6, 12], [5, 12], [4, 12], [4, 13], [4, 14]
+  ];
+
+  const blinkyMoves = [
+    [9, 10], [9, 9], [8, 9], [8,8], [8, 7], [8,6], [9, 6], [10, 6], [11, 6],
+    [12, 6], [13, 6], [14, 6], [14, 5], [14, 4]
+  ];
+  const clydeMoves = [
+    [], [9, 10], [9, 9], [8, 9], [8, 10], [8, 11], [8, 12], [9, 12], [10, 12],
+    [11, 12], [12, 12], [13, 12], [14, 12], [14, 13], [14, 14]
+  ]
+
+  const pinky = new Ghost('pinky', 'gp', 9, 9, pinkyMoves);
+  const inky = new Ghost('inky','gi', 9, 10, inkyMoves );
+  const blinky = new Ghost('blinky', 'gb', 8, 10, blinkyMoves);
+  const clyde = new Ghost('clyde', 'gc', 10, 10, clydeMoves);
+  const ghosts = [pinky, inky, blinky, clyde];
 
   const maze = [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-    [0, 4, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 4, 0],
-    [0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0],
-    [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-    [0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0],
-    [0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 0],
-    [0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0],
-    [2, 2, 2, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 2, 2, 2],
-    [0, 0, 0, 0, 1, 0, 1, 0, 0, 'gp', 0, 0, 1, 0, 1, 0, 0, 0, 0],
-    [2, 2, 2, 2, 1, 1, 1, 0, 'gb', 'gi', 'gc', 0, 1, 1, 1, 2, 2, 2, 2],
-    [0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0],
-    [2, 2, 2, 0, 1, 0, 1, 1, 1, 5, 1, 1, 1, 0, 1, 0, 2, 2, 2],
-    [0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0],
-    [0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-    [0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0],
-    [0, 4, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 4, 0],
-    [0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0],
-    [0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 0],
-    [0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0],
-    [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+  [0, 4, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 4, 0],
+  [0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0],
+  [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+  [0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0],
+  [0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 0],
+  [0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0],
+  [2, 2, 2, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 2, 2, 2],
+  [0, 0, 0, 0, 1, 0, 1, 0, 0, 'gp', 0, 0, 1, 0, 1, 0, 0, 0, 0],
+  [2, 2, 2, 2, 1, 1, 1, 0, 'gb', 'gi', 'gc', 0, 1, 1, 1, 2, 2, 2, 2],
+  [0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0],
+  [2, 2, 2, 0, 1, 0, 1, 1, 1, 5, 1, 1, 1, 0, 1, 0, 2, 2, 2],
+  [0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0],
+  [0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+  [0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0],
+  [0, 4, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 4, 0],
+  [0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0],
+  [0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 0],
+  [0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0],
+  [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
   ];
 
   function drawScore() {
@@ -210,28 +226,39 @@
     let ghostNextRow;
     let ghostNextCol;
 
-    if (ghost.dir) {
-      switch(ghost.dir) {
-        case 'LEFT':
-          ghostNextRow = ghost.row;
-          ghostNextCol = ghost.col - 1;
-          break;
-        case 'UP':
-          ghostNextRow = ghost.row - 1;
-          ghostNextCol = ghost.col;
-          break;
-        case 'RIGHT':
-          ghostNextRow = ghost.row;
-          ghostNextCol = ghost.col + 1;
-          break;
-        case 'DOWN':
-          ghostNextRow = ghost.row + 1;
-          ghostNextCol = ghost.col;
-          break;
+    if (ghost.moves.length > 0) {
+      const nextMove = ghost.moves.shift();
+      [ghostNextRow, ghostNextCol]  = [nextMove[0], nextMove[1]];
+    } else {
+
+      if (abbr === 'gp') {
+        ghost.dir = ghostMoveDistance(ghost);
       }
 
-      let nextLoc = maze[ghostNextRow][ghostNextCol];
+      if (ghost.dir) {
+        switch(ghost.dir) {
+          case 'LEFT':
+            ghostNextRow = ghost.row;
+            ghostNextCol = ghost.col - 1;
+            break;
+          case 'UP':
+            ghostNextRow = ghost.row - 1;
+            ghostNextCol = ghost.col;
+            break;
+          case 'RIGHT':
+            ghostNextRow = ghost.row;
+            ghostNextCol = ghost.col + 1;
+            break;
+          case 'DOWN':
+            ghostNextRow = ghost.row + 1;
+            ghostNextCol = ghost.col;
+            break;
+        }
+      }
+    }
 
+    if (ghostNextRow) {
+      let nextLoc = maze[ghostNextRow][ghostNextCol];
       if (nextLoc == 5 && !ghost.vulnerable)  {
         maze[ghost.row][ghost.col] = ghost.prevSpace || 2;
         [ghost.row, ghost.col] = [ghostNextRow, ghostNextCol]
@@ -254,6 +281,52 @@
     } else {
       ghost.dir = getRandomDirection();
     }
+  }
+
+  function ghostBFS(ghost) {
+    const maze = [];
+    const mazeWidth = maze[0].length;
+    const mazeHeight = maze.length;
+    for (let i = 0; i < mazeHeight; i++) {
+      map[i] = [];
+      for (j = 0; j < mapWidth; j++) {
+        map[i][j] = -1;
+      }
+    }
+  }
+
+  function ghostMoveDistance(ghost) {
+    let dirs = [
+      {
+        dir: 'UP',
+        nextPos: maze[ghost.row - 1][ghost.col],
+        distance: Math.sqrt(Math.pow((ghost.row - 1 - pacman.row), 2)
+        + Math.pow((ghost.col - pacman.col), 2))
+      },
+      {
+        dir: 'DOWN',
+        nextPos: maze[ghost.row + 1][ghost.col],
+        distance: Math.sqrt(Math.pow((ghost.row + 1 - pacman.row), 2)
+        + Math.pow((ghost.col - pacman.col), 2))
+      },
+      {
+        dir: 'LEFT',
+        nextPos: maze[ghost.row][ghost.col - 1],
+        distance: Math.sqrt(Math.pow((ghost.row - pacman.row), 2)
+        + Math.pow((ghost.col - 1 - pacman.col), 2))
+      },
+      {
+        dir: 'RIGHT',
+        nextPos: maze[ghost.row][ghost.col + 1],
+        distance: Math.sqrt(Math.pow((ghost.row- pacman.row), 2)
+        + Math.pow((ghost.col + 1 - pacman.col), 2))
+      }
+    ]
+
+    const shortestDir = dirs.sort((dir1, dir2) => {
+      return dir1.distance - dir2.distance;
+    })[0];
+    return shortestDir.dir;
   }
 
   function movePacman() {
@@ -296,7 +369,15 @@
         setTimeout(() => ghosts.forEach( ghost => {
           ghost.vulnerable = false;
         }), 9000);
-      }  else if (nextLoc === 'blue') {
+      } else if (nextLoc.toString().slice(0, 1) === 'g') {
+        maze[pacman.row][pacman.col] = 2;
+        maze[12][9] = 5;
+        [pacman.row, pacman.col] = [12, 9];
+        pacman.lives = pacman.lives - 1;
+        const audio= new Audio('./sound/pacman_death.wav');
+        audio.play();
+        return;
+      } else if (nextLoc === 'blue') {
         score += 200;
         let ghost = ghosts.filter(ghost => ghost.row == pacmanNextRow && ghost.col == pacmanNextCol)[0];
         maze[ghost.row][ghost.col] = 2;
@@ -310,12 +391,14 @@
       maze[pacman.row][pacman.col] = 2;
       [pacman.row, pacman.col] = [pacmanNextRow, pacmanNextCol];
       maze[pacmanNextRow][pacmanNextCol] = 5;
+
+
     }
   }
 
   drawMaze();
   const audioStart = new Audio('./sound/pacman_beginning.wav');
-  audioStart.play();
+  // audioStart.play();
 
   window.setInterval(drawMaze, 200)
 </script>
