@@ -91,13 +91,13 @@ function movePacman() {
 
     const nextLoc = maze[pacmanNextRow][pacmanNextCol];
 
-    if (nextLoc != 0) {
-      if (nextLoc == 1) {
+    if (nextLoc != 'wall') {
+      if (nextLoc == 'dot') {
         score += 10;
         const chomp = document.getElementById('chomp');
         chomp.pause();
         chomp.play();
-      } else if (nextLoc == 4) {
+      } else if (nextLoc == 'powerpellet') {
 
         const powerPellet = document.getElementById('power-pellet');
         powerPellet.play();
@@ -110,8 +110,8 @@ function movePacman() {
           ghost.vulnerable = false;
         }), 9000);
       } else if (nextLoc.toString().slice(0, 1) === 'g') {
-        maze[pacman.row][pacman.col] = 2;
-        maze[12][9] = 5;
+        maze[pacman.row][pacman.col] = 'ground';
+        maze[12][9] = 'pacman';
         [pacman.row, pacman.col] = [12, 9];
         pacman.lives = pacman.lives - 1;
 
@@ -122,7 +122,7 @@ function movePacman() {
       } else if (nextLoc === 'blue') {
         score += 200;
         let ghost = ghosts.filter(ghost => ghost.row == pacmanNextRow && ghost.col == pacmanNextCol)[0];
-        maze[ghost.row][ghost.col] = 2;
+        maze[ghost.row][ghost.col] = 'ground';
         [ghost.row, ghost.col] = [9, 9];
         ghost.vulnerable = false;
         maze[9][9] = ghost.abbr;
@@ -132,10 +132,9 @@ function movePacman() {
         ghost.moves = Array.from(pinkyMoves);
       }
 
-      maze[pacman.row][pacman.col] = 2;
+      maze[pacman.row][pacman.col] = 'ground';
       [pacman.row, pacman.col] = [pacmanNextRow, pacmanNextCol];
-      maze[pacmanNextRow][pacmanNextCol] = 5;
-
+      maze[pacmanNextRow][pacmanNextCol] = 'pacman';
 
     }
   }
