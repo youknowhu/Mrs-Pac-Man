@@ -93,6 +93,7 @@
   let leftPressed = false;
   let upPressed = false;
   let downPressed = false;
+  let paused = false;
 
   document.addEventListener("keydown", keyDownHandler, false);
   document.getElementById('mute').addEventListener('click', e => {
@@ -121,6 +122,9 @@
 
   function keyDownHandler(e) {
     switch (e.keyCode) {
+      case 32:
+        paused = !paused;
+        break;
       case 37:
         leftPressed = true;
         rightPressed = false;
@@ -243,6 +247,15 @@
        return true;
     }
     return false;
+  }
+
+  function playGame() {
+
+    if (!paused) {
+      drawMaze();
+    } else {
+      
+    }
   }
 
   function drawMaze() {
@@ -472,6 +485,7 @@
 
         const powerPellet = document.getElementById('power-pellet');
         powerPellet.play();
+        score += 50;
 
         ghosts.forEach(ghost => {
           ghost.vulnerable = true;
@@ -512,9 +526,12 @@
   }
 
   drawMaze();
+  window.setInterval(playGame, 220)
+
+
   const audioStart = document.getElementById('start');
   audioStart.play();
 
-  window.setInterval(drawMaze, 220)
+
 </script>
 </html>
