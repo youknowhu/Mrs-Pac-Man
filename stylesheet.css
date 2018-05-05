@@ -1,31 +1,43 @@
 body {
   display: flex;
   justify-content: center;
+  background: black;
 }
 
 body > * {
   margin: 20px 50px;
 }
 
-.right {
+.left {
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
 }
 
-.right > * {
+.left > * {
   padding-top: 30px;
 }
 
+#instructions, #scoring {
+  color: white;
+  font-family: courier;
+}
+
+#scoring {
+  width: 90%;
+}
+
 #pacman {
+  padding-top: 10vh;
   background-color: black;
   display: block;
-  height: 770px;
-  width: 665px;
+  height: 660px;
+  width: 570px;
 }
 
 #pacman > * {
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
   display: inline-block;
   float: left;
   padding: 0;
@@ -34,23 +46,23 @@ body > * {
 
 #scoreboard {
   background-color: black;
-  height: 275px;
   width: 400px;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  padding: 50px;
+  padding: 20px;
 }
 
 #scoreboard > * {
   color: white;
   font-size: 24px;
   padding-top: 15px;
-  font-family: tahoma;
+  font-family: courier;
 }
 
 #buttons {
-  margin: 0 auto;
+  padding: 0;
+  padding-left: 30px;
 }
 
 #buttons > * {
@@ -70,7 +82,7 @@ body > * {
   background-image: url("https://res.cloudinary.com/deor0br3s/image/upload/v1523992287/Untitled_drawing_4.png");
   background-size: 8.5px 8.5px;
   background-repeat: no-repeat;
-  background-position: bottom 13px right 13px;
+  background-position: bottom 11px right 11px;
 }
 
 .power-pellet {
@@ -82,14 +94,14 @@ body > * {
 
 .pacman-right {
   background-image: url("https://media.giphy.com/media/u49UDGO7rAY3B6eLrg/giphy.gif");
-  background-size: 28px 28px;
+  background-size: 25px 25px;
   background-repeat: no-repeat;
   background-position: left 3px top 3px;
 }
 
 .pacman-left {
   background-image: url("https://media.giphy.com/media/u49UDGO7rAY3B6eLrg/giphy.gif");
-  background-size: 28px 28px;
+  background-size: 25px 25px;
   background-repeat: no-repeat;
   background-position: left 3px top 3px;
   transform: rotate(180deg);
@@ -97,7 +109,7 @@ body > * {
 
 .pacman-up {
   background-image: url("https://media.giphy.com/media/u49UDGO7rAY3B6eLrg/giphy.gif");
-  background-size: 28px 28px;
+  background-size: 25px 25px;
   background-repeat: no-repeat;
   background-position: left 3px top 3px;
   transform: rotate(-90deg);
@@ -105,7 +117,7 @@ body > * {
 
 .pacman-down {
   background-image: url("https://media.giphy.com/media/u49UDGO7rAY3B6eLrg/giphy.gif");
-  background-size: 28px 28px;
+  background-size: 25px 25px;
   background-repeat: no-repeat;
   background-position: left 3px top 3px;
   transform: rotate(90deg);
@@ -113,44 +125,63 @@ body > * {
 
 .pinky {
   background-image: url("https://res.cloudinary.com/deor0br3s/image/upload/v1523921736/ghost-pinky.jpg");
-  background-size: 28px 28px;
+  background-size: 25px 25px;
   background-repeat: no-repeat;
   background-position: left 3px top 3px;
 }
 
 .blinky {
   background-image: url("https://res.cloudinary.com/deor0br3s/image/upload/v1523921736/ghost-blinky.jpg");
-  background-size: 28px 28px;
+  background-size: 25px 25px;
   background-repeat: no-repeat;
   background-position: left 3px top 3px;
 }
 
 .inky {
   background-image: url("https://res.cloudinary.com/deor0br3s/image/upload/v1523921736/ghost-inky.jpg");
-  background-size: 28px 28px;
+  background-size: 25px 25px;
   background-repeat: no-repeat;
   background-position: left 3px top 3px;
 }
 
 .clyde {
   background-image: url("https://res.cloudinary.com/deor0br3s/image/upload/v1523921736/ghost-clyde.jpg");
-  background-size: 28px 28px;
+  background-size: 25px 25px;
   background-repeat: no-repeat;
   background-position: left 3px top 3px;
 }
 
 .blue-ghost {
   background-image: url("https://res.cloudinary.com/deor0br3s/image/upload/v1524010091/pac_man__ghosts_and_guns_by_53xy83457-d5e95ws.png");
-  background-size: 28px 28px;
+  background-size: 25px 25px;
   background-repeat: no-repeat;
   background-position: left 3px top 3px;
 }
 
 i {
-  color: gray;
+  color: white;
   cursor: pointer;
 }
 
-.pressed {
+.sound.pressed {
   color: blue;
+}
+
+.title {
+  width: 40vw;
+}
+
+li {
+  line-height: 30px;
+}
+
+p {
+  line-height: 20px;
+  font-size: 20px;
+  padding: 0;
+  margin: 0;
+}
+
+.scoring-row {
+  display: flex;
 }

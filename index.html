@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <title>Pac-Man</title>
+  <title>Mrs. Pac-Man</title>
   <link rel="icon"
       type="image/png"
       href="./images/sprite-pacman.png">
@@ -10,18 +10,63 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-  <div id="pacman">
-  </div>
-
-  <div class='right'>
+  <div class='left'>
+    <img class='title' src="./images/pacman-title.png"/>
     <div id="scoreboard">
     </div>
 
     <div id='buttons'>
-      <i id='mute' class="fa fa-volume-off fa-2x"></i></a>
-      <i id='sound-on' class="fa fa-volume-up pressed fa-2x"></i></a>
+      <i id='mute' class="fa fa-volume-off fa-2x sound"></i></a>
+      <i id='sound-on' class="fa fa-volume-up pressed fa-2x sound"></i></a>
+    </div>
+
+    <div id="instructions">
+      <h2> How to Play</h2>
+      <ul>
+        <li> Navigation:
+          <ul>
+            <li>
+              Press the space bar to play and pause game.
+            </li>
+            <li>
+              Use arrow keys to navigate Pac-Man
+            </li>
+          </ul>
+
+        <li> Eat all dots (10pts) to win
+          <img style="width: 20px; height: 20px;" src="./images/sprite-pacman.png"/>
+          <img style="width: 10px; height: 10px;" src="https://res.cloudinary.com/deor0br3s/image/upload/v1523992287/Untitled_drawing_4.png"/>
+          <img style="width: 10px; height: 10px;" src="https://res.cloudinary.com/deor0br3s/image/upload/v1523992287/Untitled_drawing_4.png"/>
+          <img style="width: 10px; height: 10px;" src="https://res.cloudinary.com/deor0br3s/image/upload/v1523992287/Untitled_drawing_4.png"/>
+        </li>
+        <li> Don't get eaten by the ghosts!
+          <img style="width: 20px; height: 20px;" src="https://res.cloudinary.com/deor0br3s/image/upload/v1523921736/ghost-pinky.jpg"/>
+          <img style="width: 20px; height: 20px;" src="https://res.cloudinary.com/deor0br3s/image/upload/v1523921736/ghost-blinky.jpg"/>
+          <img style="width: 20px; height: 20px;" src="https://res.cloudinary.com/deor0br3s/image/upload/v1523921736/ghost-inky.jpg"/>
+          <img style="width: 20px; height: 20px;" src="https://res.cloudinary.com/deor0br3s/image/upload/v1523921736/ghost-clyde.jpg"/>
+        </li>
+        <li> Eat power pellets (50pts) <img style="width: 15px; height: 15px;" src="https://media.giphy.com/media/1Bg8cPljtSccMrkB65/giphy.gif"/> to turn ghosts blue
+        </li>
+        <li> Attack blue ghosts (200pts)
+          <img style="width: 20px; height: 20px;" src="./images/sprite-pacman.png"/>
+          <img style="width: 20px; height: 20px;" src="https://res.cloudinary.com/deor0br3s/image/upload/v1524010091/pac_man__ghosts_and_guns_by_53xy83457-d5e95ws.png"/>
+          <img style="width: 20px; height: 20px;" src="https://res.cloudinary.com/deor0br3s/image/upload/v1524010091/pac_man__ghosts_and_guns_by_53xy83457-d5e95ws.png"/>
+        </li>
+      </ul>
+    </div>
+
+    <div class='my-links'>
+      <a target="_blank" href='https://www.linkedin.com/in/kimberly-hu/'><i class="fa fa-linkedin"></i></a>
+      <a target="_blank" href='https://www.linkedin.com/in/kimberly-hu/'><i class="fa fa-github"></i></a>
     </div>
   </div>
+
+
+
+  <div id="pacman">
+  </div>
+
+
 
   <audio id='chomp'>
     <source src="./sound/pacman_chomp.wav" type="audio/wav">
@@ -325,25 +370,25 @@
           switch (ghostReset.abbr) {
             case 'gp':
               ghostReset.moves = Array.from(pinkyMoves);
-              maze[ghostReset.row][ghostReset.col] = 2;
+              maze[ghostReset.row][ghostReset.col] = ghostReset.prevSpace;
               [ghostReset.row, ghostReset.col] = [9, 9]
               maze[ghostReset.row][ghostReset.col] = ghostReset.abbr;
               break;
             case 'gi':
               ghostReset.moves = Array.from(inkyMoves);
-              maze[ghostReset.row][ghostReset.col] = 2;
+              maze[ghostReset.row][ghostReset.col] = ghostReset.prevSpace;
               [ghostReset.row, ghostReset.col] = [10, 9]
               maze[ghostReset.row][ghostReset.col] = ghostReset.abbr;
               break;
             case 'gc':
               ghostReset.moves = Array.from(clydeMoves);
-              maze[ghostReset.row][ghostReset.col] = 2;
+              maze[ghostReset.row][ghostReset.col] = ghostReset.prevSpace;
               [ghostReset.row, ghostReset.col] = [10, 10]
               maze[ghostReset.row][ghostReset.col] = ghostReset.abbr;
               break;
             case 'gb':
               ghostReset.moves = Array.from(blinkyMoves);
-              maze[ghostReset.row][ghostReset.col] = 2;
+              maze[ghostReset.row][ghostReset.col] = ghostReset.prevSpace;
               [ghostReset.row, ghostReset.col] = [10, 8]
               maze[ghostReset.row][ghostReset.col] = ghostReset.abbr;
               break;
@@ -479,6 +524,6 @@
   const audioStart = document.getElementById('start');
   audioStart.play();
 
-  window.setInterval(drawMaze, 200)
+  window.setInterval(drawMaze, 220)
 </script>
 </html>
