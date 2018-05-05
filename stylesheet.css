@@ -194,3 +194,30 @@ p {
   font-size: 35px;
   padding: 0px 20px;
 }
+
+#maze-overlay {
+  background: black;
+  width: 350px;
+  height: 200px;
+  position: fixed;
+  right: 13vw;
+  top: 33vh;
+  font-family: courier;
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  opacity: 0.85;
+
+}
+
+h1 {
+  font-size: 40px;
+  padding-top: 0;
+  margin-top: 0;
+}
+
+#maze-overlay.hidden {
+  display: none;
+}

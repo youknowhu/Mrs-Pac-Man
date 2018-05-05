@@ -57,6 +57,13 @@
   <div id="pacman">
   </div>
 
+  <div id='maze-overlay' class='hidden'>
+    <h1> Paused </h1>
+    <p>
+       Press space to continue.
+    </p>
+  </div>
+
 
 
   <audio id='chomp'>
@@ -124,6 +131,8 @@
     switch (e.keyCode) {
       case 32:
         paused = !paused;
+        const overlay = document.getElementById('maze-overlay')
+        paused ? overlay.classList.remove('hidden') : overlay.classList.add('hidden')
         break;
       case 37:
         leftPressed = true;
@@ -254,7 +263,7 @@
     if (!paused) {
       drawMaze();
     } else {
-      
+
     }
   }
 
