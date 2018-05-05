@@ -73,6 +73,11 @@
   <div id='game-over' class='hidden'>
   </div>
 
+  <div id='you-won' class='hidden'>
+    <h1> YOU WON! </h1>
+  </div>
+
+
 
   <audio id='chomp'>
     <source src="./sound/pacman_chomp.wav" type="audio/wav">
@@ -278,6 +283,7 @@
   }
 
   function checkGameOver() {
+    numDots = document.querySelectorAll('.dot').length
     if (pacman.lives === 0) {
       paused = true;
       const gameOver = document.getElementById('game-over');
@@ -287,6 +293,10 @@
          Score: ${score}
       </p>`
       gameOver.classList.remove('hidden');
+    } else if (numDots === 0) {
+      paused = true;
+      const won = document.getElementById('you-won');
+      won.classList.remove('hidden');
     }
   }
 
