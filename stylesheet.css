@@ -18,14 +18,12 @@ body > * {
   padding-top: 30px;
 }
 
-#instructions, #scoring {
+#instructions {
   color: white;
   font-family: courier;
+  padding: 20px;
 }
 
-#scoring {
-  width: 90%;
-}
 
 #pacman {
   padding-top: 10vh;
@@ -184,4 +182,15 @@ p {
 
 .scoring-row {
   display: flex;
+}
+
+.my-links {
+  display: flex;
+  justify-content: flex-start;
+}
+.my-links i {
+  width: 40px;
+  height: 40px;
+  font-size: 35px;
+  padding: 0px 20px;
 }
