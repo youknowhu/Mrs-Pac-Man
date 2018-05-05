@@ -283,7 +283,7 @@
   }
 
   function checkGameOver() {
-    numDots = document.querySelectorAll('.dot').length
+    numDots = document.querySelectorAll('.dot').length;
     if (pacman.lives === 0) {
       paused = true;
       const gameOver = document.getElementById('game-over');
@@ -293,7 +293,7 @@
          Score: ${score}
       </p>`
       gameOver.classList.remove('hidden');
-    } else if (numDots === 0) {
+    } else if (numDots == 1) {
       paused = true;
       const won = document.getElementById('you-won');
       won.classList.remove('hidden');
