@@ -12,24 +12,13 @@
 <body>
   <div class='left'>
     <img class='title' src="./images/pacman-title.png"/>
-    <div id="scoreboard">
+    <div class='score-and-sound'>
+      <div id="scoreboard">
+      </div>
     </div>
-
-    <div id='buttons'>
-      <i id='mute' class="fa fa-volume-off fa-2x sound"></i></a>
-      <i id='sound-on' class="fa fa-volume-up pressed fa-2x sound"></i></a>
-    </div>
-
     <div id="instructions">
       <h2> How to Play</h2>
       <ul>
-        <li> Keyboard functions:
-           <ul>
-             <li> Arrow keys: Navigate Pac-Man </li>
-             <li> Space bar: Play/pause game </li>
-             <li> M: Mute/unmute sounds</li>
-           </ul>
-        </li>
         <li> Eat dots (10pts) to win
           <img style="width: 20px; height: 20px;" src="./images/sprite-pacman.png"/>
           <img style="width: 10px; height: 10px;" src="https://res.cloudinary.com/deor0br3s/image/upload/v1523992287/Untitled_drawing_4.png"/>
@@ -44,11 +33,18 @@
         </li>
         <li> Eat power pellets (50pts) <img style="width: 15px; height: 15px;" src="https://media.giphy.com/media/1Bg8cPljtSccMrkB65/giphy.gif"/> to turn ghosts blue
         </li>
-        <li> Attack blue ghosts (200pts)
+        <li> Attack when ghosts are blue (200pts)
           <img style="width: 20px; height: 20px;" src="https://res.cloudinary.com/deor0br3s/image/upload/v1524010091/pac_man__ghosts_and_guns_by_53xy83457-d5e95ws.png"/>
           <img style="width: 20px; height: 20px;" src="https://res.cloudinary.com/deor0br3s/image/upload/v1524010091/pac_man__ghosts_and_guns_by_53xy83457-d5e95ws.png"/>
         </li>
       </ul>
+
+      <h2> Keyboard Functions</h2>
+        <ul>
+           <li> Arrow keys: Navigate Pac-Man </li>
+           <li> Space bar: Play/pause game </li>
+           <li> M: Mute/unmute sounds</li>
+        </ul>
     </div>
 
     <div class='my-links'>
@@ -58,8 +54,13 @@
   </div>
 
 
-
-  <div id="pacman">
+  <div class='right'>
+    <div id="pacman">
+    </div>
+    <div id='buttons'>
+      <i id='mute' class="fa fa-volume-off fa-2x sound"></i></a>
+      <i id='sound-on' class="fa fa-volume-up pressed fa-2x sound"></i></a>
+    </div>
   </div>
 
   <div id='maze-overlay' class='hidden'>
@@ -119,8 +120,9 @@
 
     const muteButton = document.getElementById('mute');
     const soundButton = document.getElementById('sound-on');
-    muteButton.classList.add('pressed')
-    soundButton.classList.remove('pressed')
+    muteButton.classList.add('pressed');
+    soundButton.classList.remove('pressed');
+    muted = true;
   }, false);
 
   document.getElementById('sound-on').addEventListener('click', e => {
@@ -131,8 +133,9 @@
 
     const muteButton = document.getElementById('mute');
     const soundButton = document.getElementById('sound-on');
-    muteButton.classList.remove('pressed')
-    soundButton.classList.add('pressed')
+    muteButton.classList.remove('pressed');
+    soundButton.classList.add('pressed');
+    muted = false;
   }, false);
 
   function keyDownHandler(e) {
