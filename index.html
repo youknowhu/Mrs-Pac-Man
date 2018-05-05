@@ -23,8 +23,13 @@
     <div id="instructions">
       <h2> How to Play</h2>
       <ul>
-        <li> Press space bar to play/pause </li>
-        <li> Use arrow keys to navigate Pac-Man </li>
+        <li> Keyboard functions:
+           <ul>
+             <li> Arrow keys: Navigate Pac-Man </li>
+             <li> Space bar: Play/pause game </li>
+             <li> M: Mute/unmute sounds</li>
+           </ul>
+        </li>
         <li> Eat dots (10pts) to win
           <img style="width: 20px; height: 20px;" src="./images/sprite-pacman.png"/>
           <img style="width: 10px; height: 10px;" src="https://res.cloudinary.com/deor0br3s/image/upload/v1523992287/Untitled_drawing_4.png"/>
@@ -85,7 +90,7 @@
   </audio>
 
   <audio id='start'>
-    <source src="./sound/pacman_beginning.wav1" type="audio/wav">
+    <source src="./sound/pacman_beginning.wav" type="audio/wav">
   </audio>
 
 </body>
@@ -103,6 +108,7 @@
   let upPressed = false;
   let downPressed = false;
   let paused = false;
+  let muted = false;
 
   document.addEventListener("keydown", keyDownHandler, false);
   document.getElementById('mute').addEventListener('click', e => {
@@ -135,6 +141,21 @@
         paused = !paused;
         const overlay = document.getElementById('maze-overlay')
         paused ? overlay.classList.remove('hidden') : overlay.classList.add('hidden')
+        break;
+      case 77:
+        muted = !muted
+        const audioFiles = Array.from(document.querySelectorAll('audio'));
+        const muteButton = document.getElementById('mute');
+        const soundButton = document.getElementById('sound-on');
+        if (muted) {
+          audioFiles.forEach(audio => { audio.muted = true })
+          muteButton.classList.add('pressed')
+          soundButton.classList.remove('pressed')
+        } else {
+          audioFiles.forEach(audio => { audio.muted = false })
+          muteButton.classList.remove('pressed')
+          soundButton.classList.add('pressed')
+        }
         break;
       case 37:
         leftPressed = true;
@@ -498,7 +519,7 @@
         pacmanNextCol = 0
       }
     }
-    
+
     const nextLoc = maze[pacmanNextRow][pacmanNextCol];
 
 
