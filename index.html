@@ -490,7 +490,17 @@
       return;
     }
 
+    // check for tunnels
+    if (pacmanNextRow == 10)  {
+      if (pacmanNextCol == -1) {
+        pacmanNextCol = 18
+      } else if (pacmanNextCol == 19) {
+        pacmanNextCol = 0
+      }
+    }
+    
     const nextLoc = maze[pacmanNextRow][pacmanNextCol];
+
 
     if (nextLoc != 0) {
       if (nextLoc == 1) {
