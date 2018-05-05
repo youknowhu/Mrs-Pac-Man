@@ -58,12 +58,14 @@
   </div>
 
   <div id='maze-overlay' class='hidden'>
-    <h1> Paused </h1>
+    <h1> PAUSED </h1>
     <p>
        Press space to continue.
     </p>
   </div>
 
+  <div id='game-over' class='hidden'>
+  </div>
 
 
   <audio id='chomp'>
@@ -253,17 +255,20 @@
 
   function checkGameOver() {
     if (pacman.lives === 0) {
-       return true;
+      paused = true;
+      const gameOver = document.getElementById('game-over');
+      gameOver.innerHTML =
+      `<h1> GAME OVER </h1>
+      <p>
+         Score: ${score}
+      </p>`
+      gameOver.classList.remove('hidden');
     }
-    return false;
   }
 
   function playGame() {
-
-    if (!paused) {
-      drawMaze();
-    } else {
-
+      if (!paused) {
+        drawMaze();
     }
   }
 
@@ -273,8 +278,8 @@
       moveGhost(ghost);
     })
 
-    // checkGameOver();
     drawScore();
+    checkGameOver();
 
     let innerHTMLStr = "";
     for (let row = 0; row < maze.length; row += 1) {
@@ -374,8 +379,11 @@
         maze[12][9] = 5;
         [pacman.row, pacman.col] = [12, 9];
         pacman.lives = pacman.lives - 1;
+        if (pacman.lives == 0) {gameOver = true;}
         const death = document.getElementById('death');
         death.play();
+
+        if (pacman.lives == 0) {gameOver = true;}
 
         for (let i = 0; i < ghosts.length; i++) {
           const ghostReset = ghosts[i];

@@ -195,7 +195,7 @@ p {
   padding: 0px 20px;
 }
 
-#maze-overlay {
+#maze-overlay, #game-over {
   background: black;
   width: 350px;
   height: 200px;
@@ -208,8 +208,7 @@ p {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  opacity: 0.85;
-
+  opacity: 0.88;
 }
 
 h1 {
@@ -218,6 +217,6 @@ h1 {
   margin-top: 0;
 }
 
-#maze-overlay.hidden {
+#maze-overlay.hidden, #game-over.hidden {
   display: none;
 }
