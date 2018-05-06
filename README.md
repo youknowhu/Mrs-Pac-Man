@@ -1,4 +1,6 @@
-# Pac-Man
+# Mrs. Pac-Man
+
+![PacmanTitle](http://res.cloudinary.com/deor0br3s/image/upload/v1525582589/pacman-title.png)
 ### [Live Site](https://youknowhu.github.io/Pac-Man/)
 I built a recreation of the classic Pac-Man game using only Javascript, CSS, and HTML. 
 
