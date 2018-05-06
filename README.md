@@ -9,7 +9,10 @@ The player navigates Pac-Man through a maze to collect dots while avoiding color
 ![Pacman Giphy](https://media.giphy.com/media/A1lE7R49IcWicpy9qJ/giphy.gif)
 
 ## Contents
-[Technologies Used](#technologies-used) | [Ghost AI](#ghost-ai) | [Pacman Movement](#pacman-movement) | [Planned Work](#planned-work)
+* [Technologies Used](#technologies-used) 
+* [Ghost AI](#ghost-ai) 
+* [Pacman Movement](#pacman-movement)
+* [Planned Work](#planned-work)
 
 ## Technologies Used
 * HTML5
