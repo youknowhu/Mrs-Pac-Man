@@ -143,7 +143,4 @@ function movePacman() {
 
 
 ## Planned Work
-* Additional styling for a more cohesive gameplay and aesthetic
-* Add game directions on load.
 * Add new levels
-* Add pause, play, game over, and restart functionality.
