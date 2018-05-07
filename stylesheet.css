@@ -244,6 +244,7 @@ h1 {
 #maze-overlay.hidden, #game-over.hidden, #you-won.hidden {
   display: none;
 }
+
 .score-and-sound {
   display: flex;
   flex-direction: column;
