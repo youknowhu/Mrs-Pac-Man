@@ -1,4 +1,6 @@
-# Pac-Man
+# Mrs. Pac-Man
+
+![PacmanTitle](http://res.cloudinary.com/deor0br3s/image/upload/v1525582589/pacman-title.png)
 ### [Live Site](https://youknowhu.github.io/Pac-Man/)
 I built a recreation of the classic Pac-Man game using only Javascript, CSS, and HTML. 
 
@@ -7,7 +9,10 @@ The player navigates Pac-Man through a maze to collect dots while avoiding color
 ![Pacman Giphy](https://media.giphy.com/media/A1lE7R49IcWicpy9qJ/giphy.gif)
 
 ## Contents
-[Technologies Used](#technologies-used) | [Ghost AI](#ghost-ai) | [Pacman Movement](#pacman-movement) | [Planned Work](#planned-work)
+* [Technologies Used](#technologies-used) 
+* [Ghost AI](#ghost-ai) 
+* [Pacman Movement](#pacman-movement)
+* [Planned Work](#planned-work)
 
 ## Technologies Used
 * HTML5
@@ -143,7 +148,4 @@ function movePacman() {
 
 
 ## Planned Work
-* Additional styling for a more cohesive gameplay and aesthetic
-* Add game directions on load.
 * Add new levels
-* Add pause, play, game over, and restart functionality.
