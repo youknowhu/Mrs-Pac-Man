@@ -1,7 +1,7 @@
 # Mrs. Pac-Man
 
 ![PacmanTitle](http://res.cloudinary.com/deor0br3s/image/upload/v1525582589/pacman-title.png)
-### [Live Site](https://youknowhu.github.io/Pac-Man/)
+### [Live Site](http://www.kimmyhu.com/Mrs-Pac-Man/)
 I built a recreation of the classic Pac-Man game using only Javascript, CSS, and HTML. 
 
 The player navigates Pac-Man through a maze to collect dots while avoiding colorful ghosts (Blinky, Pinky, Inky and Clyde). The player wins a level if they successfully collect all the dots. There are special dots called "power pellets" that give Pac-Man the temporary ability to eat the ghosts.
