@@ -82,7 +82,8 @@ body > * {
 }
 
 #buttons i {
-  font-size: 35px;
+  font-size: 30px;
+  opacity: 0.9;
 }
 
 .lives > img {
@@ -175,17 +176,17 @@ body > * {
 }
 
 i {
-  font-size: 30px;
+  font-size: 20px;
   color: white;
   cursor: pointer;
 }
 
 #mute.pressed {
-  color: #ed3838;
+  color: #9c9c9c;
 }
 
 #sound-on.pressed {
-  color: #4169E1;
+  color: #9c9c9c;
 }
 
 .title {
