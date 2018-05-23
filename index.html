@@ -559,7 +559,6 @@
 
     const nextLoc = maze[pacmanNextRow][pacmanNextCol];
 
-
     if (nextLoc != 0) {
       if (nextLoc == 1) {
         score += 10;
@@ -607,8 +606,6 @@
       maze[pacman.row][pacman.col] = 2;
       [pacman.row, pacman.col] = [pacmanNextRow, pacmanNextCol];
       maze[pacmanNextRow][pacmanNextCol] = 5;
-
-
     }
   }
 
