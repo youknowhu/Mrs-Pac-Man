@@ -114,12 +114,7 @@
 
 <script>
 
-  // 0 === wall
-  // 1 === dot
-  // 2 === empty
-  // 3 === ghost
-  // 4 === power pellet
-  // 5 === pacman
+
   let rightPressed = false;
   let leftPressed = false;
   let upPressed = false;
@@ -128,6 +123,8 @@
   let muted = false;
 
   document.addEventListener("keydown", keyDownHandler, false);
+
+  //Mute all sound files
   document.getElementById('mute').addEventListener('click', e => {
     e.preventDefault();
 
@@ -141,6 +138,7 @@
     muted = true;
   }, false);
 
+  //Turn on sound for all sound files
   document.getElementById('sound-on').addEventListener('click', e => {
     e.preventDefault();
 
@@ -154,6 +152,7 @@
     muted = false;
   }, false);
 
+  //key handler that checks for PacMan movement, mute, and pause
   function keyDownHandler(e) {
     switch (e.keyCode) {
       case 32:
@@ -227,6 +226,7 @@
     }
   }
 
+  //ghost starter moves
   const pinkyMoves = [
     [8, 9], [8, 8], [7, 8], [6,8], [6, 7], [6,6], [5, 6], [4, 6], [4, 5], [4, 4]
   ];
@@ -242,16 +242,26 @@
     [11, 12], [12, 12], [13, 12], [14, 12], [14, 13], [14, 14]
   ];
 
+  //Duplicate arrays to re-use if ghost dies
   const pinkyM = Array.from(pinkyMoves);
   const inkyM = Array.from(inkyMoves);
   const blinkyM = Array.from(blinkyMoves);
   const clydeM = Array.from(clydeMoves);
 
+  //instantiate ghosts
   const pinky = new Ghost('pinky', 'gp', 9, 9, pinkyM);
   const inky = new Ghost('inky','gi', 9, 10, inkyM);
   const blinky = new Ghost('blinky', 'gb', 8, 10, blinkyM);
   const clyde = new Ghost('clyde', 'gc', 10, 10, clydeM);
   const ghosts = [pinky, inky, blinky, clyde];
+
+
+  /* 0 === wall
+     1 === dot
+     2 === empty
+     3 === ghost
+     4 === power pellet
+     5 === pacman */
 
   const maze = [
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -277,6 +287,7 @@
   [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
   ];
+
 
   function drawScore() {
     let innerHTMLStr = `<div class='score'> Score: ${score} </div>`
@@ -316,6 +327,7 @@
     }
   }
 
+  //repeatedly draw PacMan board.
   function drawMaze() {
     movePacman();
     ghosts.forEach(ghost => {
@@ -416,6 +428,7 @@
       }
     }
 
+    //ghost movement logic: eat Pacman, get eaten, move normally
     if (ghostNextRow) {
       let nextLoc = maze[ghostNextRow][ghostNextCol];
       if (nextLoc == 5 && !ghost.vulnerable)  {
@@ -479,6 +492,7 @@
     }
   }
 
+  //ghost AI coordinate logic
   function ghostMoveDistance(ghost) {
     let dirs = [
       {
@@ -565,6 +579,7 @@
         setTimeout(() => ghosts.forEach( ghost => {
           ghost.vulnerable = false;
         }), 9000);
+
       } else if (nextLoc.toString().slice(0, 1) === 'g') {
         maze[pacman.row][pacman.col] = 2;
         maze[12][9] = 5;
@@ -578,6 +593,7 @@
       } else if (nextLoc === 'blue') {
         score += 200;
         let ghost = ghosts.filter(ghost => ghost.row == pacmanNextRow && ghost.col == pacmanNextCol)[0];
+
         maze[ghost.row][ghost.col] = 2;
         [ghost.row, ghost.col] = [9, 9];
         ghost.vulnerable = false;
@@ -597,12 +613,9 @@
   }
 
   drawMaze();
-  window.setInterval(playGame, 220)
-
-
+  window.setInterval(playGame, 220);
   const audioStart = document.getElementById('start');
   audioStart.play();
-
 
 </script>
 </html>
